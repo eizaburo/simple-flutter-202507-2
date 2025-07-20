@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http; //pubspec.yamlにhttp追加
 
 class Contact extends StatefulWidget {
@@ -29,7 +30,7 @@ class ContactState extends State<Contact> {
   void sendContactForm(BuildContext context) async {
     final client = http.Client();
     var url = Uri.parse(
-      "https://script.google.com/macros/s/AKfycbyzNZmAv5bxnw-_MF_tZ91q8uxs3AT_Uz0Qomf56EyYyLq9Qr7mFjmLPiZM4HpsWjDv/exec",
+      dotenv.env['GAS_API_URL'] ?? '',
     );
 
     try {
